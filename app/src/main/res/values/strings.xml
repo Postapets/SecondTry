@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">SecondTry</string>
+    <string name="welcome">ДОБРО ПОЖАЛОВАТЬ</string>
+    <string name="welcome_description">Фокусируйтесь на задачах.
+        Поддерживайте своё здоровье.
+        Оставайтесь в ресурсе.
+    </string>
+    <string name="no_account">Нет аккаунта? <b><u>Зарегистрируйтесь!</u></b></string>
+    <string name="already_has_account">Уже есть аккаунт? <b><u>Войти</u></b></string>
+    <string name="enter">Войти</string>
+    <string name="entering">Вход</string>
+    <string name="name">Имя</string>
+    <string name="email">Email</string>
+    <string name="pass">Пароль</string>
+    <string name="register">Регистрация</string>
+    <string name="register_button">Зарегистрироваться</string>
+
+
 </resources>
