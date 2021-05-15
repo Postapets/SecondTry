@@ -14,6 +14,10 @@
     <string name="pass">Пароль</string>
     <string name="register">Регистрация</string>
     <string name="register_button">Зарегистрироваться</string>
+    <string name="add_button">Добавить</string>
+    <string name="save_button">Сохранить</string>
+    <string name="task_name">Название</string>
+    <string name="task_annotation">Описание</string>
 
 
 </resources>

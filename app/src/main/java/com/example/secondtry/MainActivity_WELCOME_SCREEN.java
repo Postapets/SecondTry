@@ -22,7 +22,7 @@ class MainActivity2 extends AppCompatActivity {
                 Intent intent = new Intent(com.example.secondtry.MainActivity2.this,Log_in.class);
                 startActivity(intent);
 
-                Toast.makeText(com.example.secondtry.MainActivity2.this,"button is clicked",Toast.LENGTH_SHORT).show();
+                Toast.makeText(com.example.secondtry.MainActivity2.this,"button is click1ed",Toast.LENGTH_SHORT).show();
             }
         });
 
