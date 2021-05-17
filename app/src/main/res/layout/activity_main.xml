@@ -22,7 +22,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/addButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -30,6 +30,32 @@
                 android:fontFamily="@font/alegreya_bold"
                 android:onClick="add"
                 android:text="@string/add_button"
+                app:backgroundTint="@color/common_button" />
+
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/enter_button"
+                android:fontFamily="@font/alegreya_bold"
+
+                android:onClick="add"
+
+                android:text="@string/delete_button"
+                app:backgroundTint="@color/common_button" />
+
+            <Button
+                android:id="@+id/calendarButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/enter_button"
+                android:fontFamily="@font/alegreya_bold"
+
+                android:onClick="add"
+
+                android:text="@string/calendar_button"
                 app:backgroundTint="@color/common_button" />
         </LinearLayout>
 

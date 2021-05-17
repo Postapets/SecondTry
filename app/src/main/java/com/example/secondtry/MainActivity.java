@@ -16,7 +16,7 @@ import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
-    private final RecyclerView.Adapter adapter = new ItemAdapter();
+    private final RecyclerView.Adapter adapter = new ItemAdapter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,43 +29,15 @@ public class MainActivity extends AppCompatActivity {
         recycler.setAdapter(adapter);
     }
 
+    //используется в main_activity.xml при нажатии кнопки добавить
     public void add(View view) {
         Intent intent = new Intent(this.getApplicationContext(), AddActivity.class);
         startActivity(intent);
     }
 
-    private static final class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    public void delete(){
 
-        @NonNull
-        @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int index) {
-            return new RecyclerView.ViewHolder(
-                    LayoutInflater.from(parent.getContext())
-                            .inflate(R.layout.items, parent, false)
-            ) {};
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int index) {
-            TextView name = holder.itemView.findViewById(R.id.name);
-            TextView created = holder.itemView.findViewById(R.id.created);
-            Item item = Store.getStore().get(index);
-            name.setText(String.format("%s. %s", index, item.getName()));
-            created.setText(format(item.getCreated()));
-            CheckBox done = holder.itemView.findViewById(R.id.done);
-            done.setOnCheckedChangeListener((view, checked) -> item.setDone(checked));
-        }
-
-        private String format(Calendar cal) {
-            return String.format(
-                    Locale.getDefault(), "%02d.%02d.%d",
-                    cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.MONTH), cal.get(Calendar.YEAR)
-            );
-        }
-
-        @Override
-        public int getItemCount() {
-            return Store.getStore().size();
-        }
     }
+
+
 }
