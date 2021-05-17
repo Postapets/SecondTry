@@ -21,5 +21,6 @@
     <string name="save_button">Сохранить</string>
     <string name="task_name">Название</string>
     <string name="task_annotation">Описание</string>
+    <string name="start_task_button">Начать</string>
 
 </resources>
