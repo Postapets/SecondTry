@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/enter_button"
-                android:fontFamily="@font/alegreya_bold"
+                android:fontFamily="@font/roboto_regular"
                 android:onClick="add"
                 android:text="@string/add_button"
                 app:backgroundTint="@color/common_button" />
