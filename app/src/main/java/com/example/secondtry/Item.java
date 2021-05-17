@@ -1,15 +1,21 @@
 package com.example.secondtry;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.util.Calendar;
 import java.util.Objects;
 
 public class Item {
     private String name;
+    private String desc;
     private Calendar created;
     private boolean done;
 
-    public Item(String name, Calendar created) {
+    public Item(String name, String desc, Calendar created) {
         this.name = name;
+        this.desc = desc;
         this.created = created;
     }
 
@@ -20,6 +26,10 @@ public class Item {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getDesc() { return desc; }
+
+    public void setDesc(String desc) { this.desc = desc; }
 
     public Calendar getCreated() {
         return created;
@@ -37,6 +47,7 @@ public class Item {
         this.done = done;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

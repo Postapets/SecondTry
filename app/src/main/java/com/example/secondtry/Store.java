@@ -3,7 +3,9 @@ package com.example.secondtry;
 import java.util.ArrayList;
 import java.util.List;
 
+//этот класс для хранения всех параметров одного события?
 public class Store {
+    //и подпиши что это за константа
     private static final Store INST = new Store();
 
     private final List<Item> items = new ArrayList<>();

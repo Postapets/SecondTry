@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">SecondTry</string>
     <string name="welcome">ДОБРО ПОЖАЛОВАТЬ</string>
     <string name="welcome_description">Фокусируйтесь на задачах.
@@ -15,9 +16,10 @@
     <string name="register">Регистрация</string>
     <string name="register_button">Зарегистрироваться</string>
     <string name="add_button">Добавить</string>
+    <string name="delete_button">Удалить</string>
+    <string name="calendar_button">cal</string>
     <string name="save_button">Сохранить</string>
     <string name="task_name">Название</string>
     <string name="task_annotation">Описание</string>
-
 
 </resources>
