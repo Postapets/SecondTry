@@ -28,7 +28,7 @@
                 android:layout_height="87dp"
                 android:fontFamily="@font/alegreya_bold"
                 android:gravity="center_vertical"
-                android:text="Добро пожаловать!"
+                android:text="@string/welcome_main"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="32sp"
@@ -43,7 +43,7 @@
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/alegreya_bold"
                 android:gravity="center_vertical"
-                android:text="Какие планы на сегодня?"
+                android:text="@string/planes_mail"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="15sp"
@@ -108,7 +108,8 @@
                 android:textSize="10sp"
                 app:backgroundTint="@color/white"
                 app:layout_constraintBottom_toTopOf="@+id/calendarButton"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="SmallSp" />
 
             <Button
                 android:id="@+id/deleteButton"
