@@ -79,34 +79,18 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/calendarButton"
-                android:layout_width="180dp"
-                android:layout_height="45dp"
-                android:layout_margin="16dp"
-                android:layout_weight="1"
-                android:background="@drawable/dark_green_rect"
-                android:fontFamily="@font/roboto_regular"
-                android:onClick="add"
-                android:text="@string/start_task_button"
-                android:textColor="@color/white"
-                app:backgroundTint="@color/dark_green_button"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/deleteButton"
-                app:layout_constraintStart_toEndOf="@+id/addButton" />
-
-            <Button
                 android:id="@+id/addButton"
                 android:layout_width="100dp"
                 android:layout_height="32dp"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
-                android:background="@drawable/white_rect"
+                android:background="@drawable/white_button_selector"
+                app:backgroundTint="@null"
                 android:fontFamily="@font/roboto_regular"
                 android:onClick="add"
                 android:text="@string/add_button"
                 android:textColor="@color/black"
                 android:textSize="10sp"
-                app:backgroundTint="@color/white"
                 app:layout_constraintBottom_toTopOf="@+id/calendarButton"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="SmallSp" />
@@ -117,16 +101,35 @@
                 android:layout_height="32dp"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
-                android:background="@drawable/white_rect"
+                android:background="@drawable/white_button_selector"
+                app:backgroundTint="@null"
                 android:fontFamily="@font/roboto_regular"
                 android:onClick="add"
                 android:text="@string/delete_button"
                 android:textColor="@color/black"
                 android:textSize="10sp"
-                app:backgroundTint="@color/white"
                 app:layout_constraintBottom_toTopOf="@+id/calendarButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:ignore="SmallSp" />
+
+            <Button
+                android:id="@+id/calendarButton"
+                android:layout_width="180dp"
+                android:layout_height="45dp"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/dark_green_button_selector"
+                app:backgroundTint="@null"
+                android:fontFamily="@font/roboto_regular"
+                android:onClick="add"
+                android:text="@string/start_task_button"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/deleteButton"
+                app:layout_constraintStart_toEndOf="@+id/addButton" />
+
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

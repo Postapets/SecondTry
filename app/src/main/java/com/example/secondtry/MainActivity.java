@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this.getApplicationContext(), AddActivity.class);
         startActivity(intent);
     }
-
     public void delete(){
 
     }

@@ -57,7 +57,7 @@
       android:layout_marginHorizontal="15dp"
       android:layout_marginVertical="10dp"
       android:layout_marginBottom="28dp"
-      android:background="@drawable/enter__blue_button"
+      android:background="@drawable/blue_green_rect"
       android:fontFamily="@font/roboto_regular"
       android:text="@string/register_button"
       android:textColor="@color/white"

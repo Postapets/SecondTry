@@ -50,7 +50,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/roboto_regular"
-            android:background="@drawable/enter__blue_button"
+            android:background="@drawable/blue_button_selector"
             android:text="@string/save_button" />
 </LinearLayout>
 
