@@ -47,7 +47,10 @@ public final class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         CheckBox done = holder.itemView.findViewById(R.id.done);
         Item item = Store.getStore().get(index);
 
-        name.setText(String.format("%s. %s", index, item.getName()));
+
+        //Маша я тут сделал index+1 чтобы он выводил нумерацию не с нуля, если че
+        // по идее не должно влиять ни на что, но посмотри, мало ли
+        name.setText(String.format("%s %s", index+1, item.getName()));
         created.setText(format(item.getCreated()));
         //чтоб потом удалять надо будет добавлять в массив значений отмеченных
         done.setOnCheckedChangeListener((view, checked) -> item.setDone(checked));

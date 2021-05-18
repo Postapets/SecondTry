@@ -3,11 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     android:background="@drawable/green_background">
 
 
-    <!--МАША ЭТОТ ЛЕЙАУТ ПОЛНАЯ КОПИЯ activity_add_item,
-     если здесь нужно перевязать кнопку или айди полей, сделай это -->
     <EditText
         android:id="@+id/name"
         android:layout_width="match_parent"
@@ -43,15 +42,15 @@
         android:autofillHints="" />
 
     <Button
-        android:id="@+id/add"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="save"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="16dp"
-        android:fontFamily="@font/roboto_regular"
-        android:background="@drawable/enter__blue_button"
-        android:text="@string/save_button" />
+            android:id="@+id/add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="save"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/roboto_regular"
+            android:background="@drawable/enter__blue_button"
+            android:text="@string/save_button" />
 </LinearLayout>
 

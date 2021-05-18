@@ -12,7 +12,7 @@ public class AddActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle saved) {
         super.onCreate(saved);
-        setContentView(R.layout.add);
+        setContentView(R.layout.activity_add_item);
     }
 
 
