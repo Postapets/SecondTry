@@ -20,8 +20,8 @@ public class Sign_in extends AppCompatActivity {
         button=(Button) findViewById(R.id.enter_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
-               // Intent intent = new Intent(Sign_in.this,TODO.class);
-              //  startActivity(intent);
+                Intent intent = new Intent(Sign_in.this,MainActivity.class);
+                startActivity(intent);
 
                 Toast.makeText(Sign_in.this,"button is clicked",Toast.LENGTH_SHORT).show();
             }
