@@ -58,8 +58,6 @@ public class TimerActivity extends AppCompatActivity {
 
 
         //ТАЙМЕР ПОКА НЕ РАБОТАЕТ
-
-
 //
 //        for (int i=0;i<itemTimes.size();i++){
 //            int finalI = i;
