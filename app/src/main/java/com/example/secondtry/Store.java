@@ -21,6 +21,8 @@ public class Store {
         this.items.add(item);
     }
 
+    public void remove(int index) {this.items.remove(index);}
+
     public List<Item> getAll() {
         return this.items;
     }

@@ -121,7 +121,7 @@
                 android:background="@drawable/dark_green_button_selector"
                 app:backgroundTint="@null"
                 android:fontFamily="@font/roboto_regular"
-                android:onClick="add"
+                android:onClick="startTimer"
                 android:text="@string/start_task_button"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"

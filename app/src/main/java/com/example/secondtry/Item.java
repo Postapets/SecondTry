@@ -4,18 +4,27 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.sql.Time;
 import java.util.Calendar;
 import java.util.Objects;
 
 public class Item {
     private String name;
     private String desc;
+    private Long timeAmount;//в секундах
     private Calendar created;
     private boolean done;
 
     public Item(String name, String desc, Calendar created) {
         this.name = name;
         this.desc = desc;
+        this.created = created;
+    }
+
+    public Item(String name, String desc, Long timeAmount,Calendar created) {
+        this.name = name;
+        this.desc = desc;
+        this.timeAmount = timeAmount;
         this.created = created;
     }
 
@@ -30,6 +39,10 @@ public class Item {
     public String getDesc() { return desc; }
 
     public void setDesc(String desc) { this.desc = desc; }
+
+    public Long getTimeAmount() { return timeAmount; }
+
+    public void setTimeAmount(Long timeAmount) { this.timeAmount = timeAmount; }
 
     public Calendar getCreated() {
         return created;
@@ -56,6 +69,7 @@ public class Item {
         return Objects.equals(name, item.name);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public int hashCode() {
         return Objects.hash(name);
