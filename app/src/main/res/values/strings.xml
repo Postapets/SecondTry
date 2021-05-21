@@ -26,5 +26,9 @@
     <string name="planes_mail">Какие планы на сегодня?</string>
     <string name="new_task">Новая задача</string>
     <string name="hours_and_seconds">Часы и минуты</string>
+    <string name="zero_time">00:00</string>
+    <string name="end_timer">Завершить</string>
+    <string name="concentrate">Концентрация</string>
+    <string name="concentrate_hint">Выполняйте задания, пока время не закончилось!</string>
 
 </resources>
