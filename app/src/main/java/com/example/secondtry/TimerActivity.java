@@ -28,7 +28,7 @@ public class TimerActivity extends AppCompatActivity {
 
         timerText = findViewById(R.id.timerText);
         timerBar = findViewById(R.id.timerBar);
-        timerStopButton = findViewById(R.id.timerEndButton);
+        timerStopButton = findViewById(R.id.end_timer);
 
         //вытаскиваем аргументы из MainActivity
         Bundle arguments = getIntent().getExtras();
