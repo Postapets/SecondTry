@@ -2,28 +2,21 @@ package com.example.secondtry;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
     private final RecyclerView.Adapter adapter = new ItemAdapter(this);
 
-    protected ArrayList<String> taskNames = new ArrayList<String>();
-    protected ArrayList<Long> taskTimes = new ArrayList<Long>();
+    protected ArrayList<String> taskNames = new ArrayList<>();
+    protected ArrayList<Long> taskTimes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         //а затем описать здесь вызов этого метода и глянуть как recycle view отображает это все
 
     }
+
     //используется в main_activity.xml при нажатии кнопки начать
     public void startTimer(View view){
         if (taskNames!=null && taskTimes!=null) {

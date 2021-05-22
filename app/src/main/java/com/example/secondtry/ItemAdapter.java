@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,7 +16,7 @@ import java.util.Locale;
 
 //класс адаптера, куда добавляем все данные для внесения во viewholder
 public final class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private Context context;
+    private final Context context;
 
     public ItemAdapter(Context context){
         this.context = context;
@@ -44,7 +45,8 @@ public final class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         );
         TextView name = holder.itemView.findViewById(R.id.name);
         TextView created = holder.itemView.findViewById(R.id.created);
-        CheckBox done = holder.itemView.findViewById(R.id.done);
+        CheckBox itemChecked = holder.itemView.findViewById(R.id.checked);
+        EditText timeDuration = holder.itemView.findViewById(R.id.timeDuration);
         Item item = Store.getStore().get(index);
 
 
@@ -53,7 +55,9 @@ public final class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         name.setText(String.format("%s %s", index+1, item.getName()));
         created.setText(format(item.getCreated()));
         //чтоб потом удалять надо будет добавлять в массив значений отмеченных
-        done.setOnCheckedChangeListener((view, checked) -> item.setDone(checked));
+        itemChecked.setOnCheckedChangeListener((view, checked) -> item.setDone(checked));
+        Long itemSeconds = item.getTimeAmount();
+        timeDuration.setText(String.format(Locale.getDefault(),"%d:%d", itemSeconds % 60, itemSeconds / 60));
     }
 
     //это наверное тож потом в другой класс запихнем
