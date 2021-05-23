@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.secondtry.database.AppDatabase;
+
 import org.jetbrains.annotations.Nullable;
 import java.util.Calendar;
 
@@ -45,11 +47,17 @@ public class AddActivity extends AppCompatActivity {
         EditText edit = this.findViewById(R.id.name);
         EditText editDesc = this.findViewById(R.id.desc);
         Long editSeconds = (long) (itemHour * 3600 + itemMinute * 60);
-        Store.getStore().add(
-                new Item(edit.getText().toString(),
-                        editDesc.getText().toString() ,
-                        editSeconds,
-                        Calendar.getInstance()));
+        AppDatabase db = AppDatabase.getDbInstance(this.getApplicationContext());
+        db.itemDao().insertAll(new Item(edit.getText().toString(),
+                editDesc.getText().toString() ,
+                editSeconds,
+                Calendar.getInstance()));
+
+//        Store.getStore().add(
+//                new Item(edit.getText().toString(),
+//                        editDesc.getText().toString() ,
+//                        editSeconds,
+//                        Calendar.getInstance()));
 
         Intent intent = new Intent(this.getApplicationContext(), MainActivity.class);
         startActivity(intent);

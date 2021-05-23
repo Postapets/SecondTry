@@ -3,18 +3,22 @@ package com.example.secondtry;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.secondtry.database.AppDatabase;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
-    private final RecyclerView.Adapter adapter = new ItemAdapter(this);
+    private ItemAdapter adapter;
 
     protected ArrayList<String> taskNames = new ArrayList<>();
     protected ArrayList<Long> taskTimes = new ArrayList<>();
@@ -27,12 +31,16 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recycler = findViewById(R.id.recycler);
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new ItemAdapter(this);
         recycler.setAdapter(adapter);
+
+        loadItemList();
 
         taskNames.add("Task1 with 30 sec");
         taskTimes.add((long) 30);
         taskNames.add("Task2 with 2:10 min");
         taskTimes.add((long) 130);
+
 
     }
 //
@@ -47,10 +55,27 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void delete(){
-        //в store надо добавить метод для удаление элемента из items
-        //а затем описать здесь вызов этого метода и глянуть как recycle view отображает это все
+    public void delete(View view){
+        if (Store.getStore().sizeChecked() > 0){
+            List<Integer> checkedItems = Store.getStore().getAllChecked();
+            AppDatabase db = AppDatabase.getDbInstance(this.getApplicationContext());
+            for (int i=0;i<checkedItems.size();i++){
+                Item item = db.itemDao().getById(checkedItems.get(i));
+                db.itemDao().delete(item);
+            }
+//            for (int i=0; i<checkedItems.size();i++) {
+//                Store.getStore().remove(checkedItems.get(i));
+//            }
+            loadItemList();
+        } else{
+            Toast.makeText(this, "Выберите элементы для удаления!", Toast.LENGTH_SHORT).show();
+        }
+    }
 
+    private void loadItemList() {
+        AppDatabase db = AppDatabase.getDbInstance(this.getApplicationContext());
+        List<Item> itemList = db.itemDao().getAllItems();
+        adapter.setItemList(itemList);
     }
 
     //используется в main_activity.xml при нажатии кнопки начать

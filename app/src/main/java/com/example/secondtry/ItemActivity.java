@@ -14,6 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.secondtry.database.AppDatabase;
+
 //класс для отображения данных о конкретном нажатом iteme
 public class ItemActivity extends AppCompatActivity {
 
@@ -28,14 +30,14 @@ public class ItemActivity extends AppCompatActivity {
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_details);
-        int index = getIntent().getIntExtra("index", 0);
-        Item item = Store.getStore().get(index);
+        Item item = (Item) getIntent().getSerializableExtra("item");
+//        Item item = Store.getStore().get(index);
 
         name = findViewById(R.id.name);
         name.setText(item.getName());
 
         desc = findViewById(R.id.desc);
-        desc.setText(item.getDesc());
+        desc.setText(item.getDescription());
 
         timePicker = findViewById(R.id.timePicker);
         timePicker.setIs24HourView(true);
@@ -85,7 +87,7 @@ public class ItemActivity extends AppCompatActivity {
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                if (hourOfDay != itemHour|minute!=itemMinute){
+                if (hourOfDay != itemHour|minute != itemMinute){
                     saveButton.setVisibility(View.VISIBLE);
                 }
                 itemHour = hourOfDay;
@@ -97,31 +99,35 @@ public class ItemActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteItem(index);
+                deleteItem(item);
             }
         });
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveItem(index, item);
+                saveItem(item);
             }
         });
 
     }
 
-    private void saveItem(int index, Item item) {
+    private void saveItem(Item item) {
         item.setName(name.getText().toString());
-        item.setDesc(desc.getText().toString());
+        item.setDescription(desc.getText().toString());
         Long editSeconds = (long) (itemHour * 3600 + itemMinute * 60);
         item.setTimeAmount(editSeconds);
-        Store.getStore().change(index, item);
+        AppDatabase db = AppDatabase.getDbInstance(this.getApplicationContext());
+        db.itemDao().update(item);
+        //Store.getStore().change(index, item);
         Intent intent = new Intent(this.getApplicationContext(), MainActivity.class);
         startActivity(intent);
     }
 
-    private void deleteItem(int index) {
-        Store.getStore().remove(index);
+    private void deleteItem(Item item) {
+        AppDatabase db = AppDatabase.getDbInstance(this.getApplicationContext());
+        db.itemDao().delete(item);
+        //Store.getStore().remove(index);
         Intent intent = new Intent(this.getApplicationContext(), MainActivity.class);
         startActivity(intent);
     }

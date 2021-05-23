@@ -3,30 +3,55 @@ package com.example.secondtry;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-import java.sql.Time;
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Objects;
 
-public class Item {
+@Entity
+public class Item implements Serializable {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+    @ColumnInfo(name = "name")
     private String name;
-    private String desc;
+
+    @ColumnInfo(name = "description")
+    private String description;
+
+    @ColumnInfo(name = "timeAmount")
     private Long timeAmount;//в секундах
+
+    @ColumnInfo(name = "created")
     private Calendar created;
-    private boolean done;
+
+//    @ColumnInfo(name = "done")
+//    private boolean done;
+
+    public Item() {
+
+    }
 
     public Item(String name, String desc, Calendar created) {
         this.name = name;
-        this.desc = desc;
+        this.description = desc;
         this.created = created;
     }
 
     public Item(String name, String desc, Long timeAmount,Calendar created) {
         this.name = name;
-        this.desc = desc;
+        this.description = desc;
         this.timeAmount = timeAmount;
         this.created = created;
     }
+
+    public int getId() { return id; }
+
+    //ОПАСНО
+    public void setId(int id) { this.id = id; }
 
     public String getName() {
         return name;
@@ -36,9 +61,9 @@ public class Item {
         this.name = name;
     }
 
-    public String getDesc() { return desc; }
+    public String getDescription() { return description; }
 
-    public void setDesc(String desc) { this.desc = desc; }
+    public void setDescription(String desc) { this.description = desc; }
 
     public Long getTimeAmount() { return timeAmount; }
 
@@ -52,13 +77,13 @@ public class Item {
         this.created = created;
     }
 
-    public boolean isDone() {
-        return done;
-    }
-
-    public void setDone(boolean done) {
-        this.done = done;
-    }
+//    public boolean isDone() {
+//        return done;
+//    }
+//
+//    public void setDone(boolean done) {
+//        this.done = done;
+//    }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override

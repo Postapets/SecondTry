@@ -104,7 +104,7 @@
                 android:background="@drawable/white_button_selector"
                 app:backgroundTint="@null"
                 android:fontFamily="@font/roboto_regular"
-                android:onClick="add"
+                android:onClick="delete"
                 android:text="@string/delete_button"
                 android:textColor="@color/black"
                 android:textSize="10sp"

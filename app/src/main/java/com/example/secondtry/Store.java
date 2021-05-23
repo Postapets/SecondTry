@@ -1,10 +1,15 @@
 package com.example.secondtry;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
+import com.example.secondtry.database.AppDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
 //этот класс для хранения всех параметров одного события?
-public class Store {
+public class Store extends AppCompatActivity {
     //и подпиши что это за константа
     private static final Store INST = new Store();
 
@@ -24,7 +29,10 @@ public class Store {
     public void addChecked(int itemIndex) { this.checkedItems.add(itemIndex);}
 
     public void remove(int index) {this.items.remove(index);}
-    public void removeChecked(int index) {this.checkedItems.remove(index);}
+    public void removeChecked(int itemId) {
+        int selectedItem = this.checkedItems.indexOf(itemId);
+        this.checkedItems.remove(selectedItem);
+    }
 
     public List<Item> getAll() {
         return this.items;
