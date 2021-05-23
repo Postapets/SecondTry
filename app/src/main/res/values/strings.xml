@@ -31,5 +31,10 @@
     <string name="concentrate">Концентрация</string>
     <string name="concentrate_hint">Выполняйте задания, пока время не закончилось!</string>
     <string name="next_timer">Следующая активность</string>
+    <string name="end_timer_text">Время истекло</string>
+    <string name="end_time_text2">Как ваши успехи?</string>
+    <string name="go_to_main_button">Вернуться на главную</string>
+    <string name="timer_interrupted_text">Так быстро?</string>
+    <string name="timer_interrupted_text2">Вы уже все успели?</string>
 
 </resources>
