@@ -24,7 +24,6 @@ public class Log_in extends AppCompatActivity {
                 //Intent intent = new Intent(Log_in.this,TODO.class);
                //startActivity(intent);
 
-                Toast.makeText(Log_in.this,"button is clicked",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -37,7 +36,6 @@ public class Log_in extends AppCompatActivity {
                 Intent intent = new Intent(Log_in.this,Sign_in.class);
                 startActivity(intent);
 
-                Toast.makeText(Log_in.this,"Text is clicked",Toast.LENGTH_SHORT).show();
             }
 
 

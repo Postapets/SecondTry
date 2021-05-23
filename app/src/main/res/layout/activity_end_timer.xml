@@ -61,7 +61,6 @@
             android:background="@drawable/dark_green_button_selector"
             app:backgroundTint="@null"
             android:fontFamily="@font/roboto_regular"
-            android:onClick="@TODO"
             android:text="@string/go_to_main_button"
             android:textColor="@color/white" />
     </LinearLayout>

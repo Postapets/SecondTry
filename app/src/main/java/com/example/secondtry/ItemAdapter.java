@@ -49,13 +49,18 @@ public final class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 }
         );
         TextView name = holder.itemView.findViewById(R.id.name);
-        TextView created = holder.itemView.findViewById(R.id.created);
+
+        //TODO выпилил на время поле с датой в итеме, оно нахуй не надо и мешает
+        //TextView created = holder.itemView.findViewById(R.id.created);
         CheckBox itemChecked = holder.itemView.findViewById(R.id.checked);
         EditText timeDuration = holder.itemView.findViewById(R.id.timeDuration);
         Item item = Store.getStore().get(index);
 
         name.setText(String.format("%s %s", index+1, item.getName()));
-        created.setText(format(item.getCreated()));
+
+        //TODO
+        //created.setText(format(item.getCreated()));
+
 
         //редактируем массив отмеченных элементов
         itemChecked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
