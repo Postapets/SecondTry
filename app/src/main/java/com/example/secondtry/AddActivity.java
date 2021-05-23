@@ -24,11 +24,12 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(saved);
         setContentView(R.layout.activity_add_item);
 
-        //тут некрасиво в лейауте отображается таймпикер, исправь плиз
         TimePicker timePicker = findViewById(R.id.timePicker);
         timePicker.setIs24HourView(true); // 24H Mode.
         timePicker.setHour(0);
         timePicker.setMinute(30);
+        itemHour = 0;
+        itemMinute = 30;
 
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
@@ -43,7 +44,7 @@ public class AddActivity extends AppCompatActivity {
     public void save(View view) {
         EditText edit = this.findViewById(R.id.name);
         EditText editDesc = this.findViewById(R.id.desc);
-        Long editSeconds = Long.valueOf(itemHour * 3600 + itemMinute * 60);
+        Long editSeconds = (long) (itemHour * 3600 + itemMinute * 60);
         Store.getStore().add(
                 new Item(edit.getText().toString(),
                         editDesc.getText().toString() ,

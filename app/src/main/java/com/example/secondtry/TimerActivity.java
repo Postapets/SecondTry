@@ -12,14 +12,21 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 //класс активности таймера, должен быть рабочий
 public class TimerActivity extends AppCompatActivity {
 
     public TextView timerText;
-    public ProgressBar timerBar;
-    public Button timerStopButton;
-    private Long timeSum = Long.valueOf(0);
+    public ProgressBar progressBar;
+    public Button stopButton;
+    public Button nextItemTimer;
+    private Long itemTimeSum = 0L;
+    private boolean itemsInQueue = false;
+    public Long currentTime;
+    ArrayList<String> itemNames;
+    ArrayList<Long> itemTimes;
+    ItemCountDownTimer newTimer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,79 +34,143 @@ public class TimerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_timer);
 
         timerText = findViewById(R.id.timerText);
-        timerBar = findViewById(R.id.timerBar);
-        timerStopButton = findViewById(R.id.end_timer);
+        progressBar = findViewById(R.id.timerBar);
+        nextItemTimer = findViewById(R.id.nextItemTimer);
+        stopButton = findViewById(R.id.end_timer);
 
         //вытаскиваем аргументы из MainActivity
         Bundle arguments = getIntent().getExtras();
 
-        ArrayList<String> itemNames = (ArrayList<String>) arguments.get("itemsNames");
-        ArrayList<Long> itemTimes = (ArrayList<Long>) arguments.get("itemsTime");
+        itemNames = (ArrayList<String>) arguments.get("itemsNames");
+        itemTimes = (ArrayList<Long>) arguments.get("itemsTime");
+        newTimer= new ItemCountDownTimer(itemTimes.get(0), 1000);
+        newTimer.start();
 
+        //startTimer(itemNames.get(0), itemTimes.get(0));
+        //setNewTimer();
         //создаем общую переменную со временем для рассчитывания progressBar
-        //этого можно не делать, если сделаем прогресс бар на каждую активность отдельно
 //        for(Long itemTime: itemTimes){
-//            timeSum += itemTime;
+//            itemTimeSum += itemTime;
 //        }
 
         //рассчет коэффициента для прогрессбара
-        //Double coefficient = 100 / (double) timeSum * 1.0;
-        double coefficient = 100/ (double) itemTimes.get(0) * 1.0;
+        //double progressBarCoef = 100 / (double) itemTimeSum * 1.0;
+        //itemsInQueue = isItemsLeft(itemNames);
+//        currentTime = itemTimes.get(0);
 
-        CountDownTimer newTimer = startTimer(itemTimes.get(0),itemNames.get(0), coefficient);
+//        newTimer= new ItemCountDownTimer(10000, 1000);
+//        ItemCountDownTimer.start();
 
-        timerStopButton.setOnClickListener(new View.OnClickListener() {
+
+//        CountDownTimer newTimer = new CountDownTimer(currentTime, 1000){
+//            Long anotherItemsTime = (itemTimeSum - currentTime) / 1000;
+//
+//            @Override
+//            public void onTick(long l) {
+//                l /= 1000;
+//
+//                Toast.makeText(TimerActivity.this,
+//                        String.format(Locale.getDefault(),"l %d", l),
+//                        Toast.LENGTH_SHORT).show();
+//                int currentMinute = (int) (l / 60);
+//                int currentSecond = (int) (l % 60);
+//                timerText.setText(String.format(Locale.getDefault(), "%d:%d", currentMinute,currentSecond));
+////                timerText.setText(String.format(Locale.getDefault(), "%s\n" +
+////                        "%d:%d", itemNames.get(0), currentMinute, currentSecond));
+//                Toast.makeText(TimerActivity.this, String.format(Locale.getDefault(),"timerBeforeBar %d", l), Toast.LENGTH_SHORT).show();
+//                progressBar.setProgress((int)((anotherItemsTime + l)*progressBarCoef));
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//                //afterTimerFinish(itemNames, itemTimes);
+//                itemNames.remove(0);
+//                itemTimes.remove(0);
+//
+//                if (isItemsLeft(itemNames)) {
+//                    this.start();
+//                }
+//            }
+//        }.start();
+
+        stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 stopTimer(newTimer);
             }
         });
 
-
-
-        //ТАЙМЕР ПОКА НЕ РАБОТАЕТ
-//
-//        for (int i=0;i<itemTimes.size();i++){
-//            int finalI = i;
-//            new CountDownTimer(itemTimes.get(finalI)*1000, 1000){
-//                @Override
-//                public void onTick(long l) {
-//                    l /= 1000;
-//                    timerText.setText(""+itemNames.get(finalI)+"\n"+l);
-//
-//                    timerBar.setProgress((int)(l*coefficient));
-//                }
-//
-//                @Override
-//                public void onFinish() {
-//
-//                }
-//            }.start();
-//        }
+        nextItemTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stopTimer(newTimer);
+                setNewTimer();
+            }
+        });
 
     }
 
-    private CountDownTimer startTimer(long timeAmount, String taskName, double coefficient){
-        CountDownTimer newTimer = new CountDownTimer(timeAmount, 1000){
-            @Override
-            public void onTick(long l) {
-                l /= 1000;
-                int currentMinute = (int) (l / 60);
-                int currentSecond = (int) (l % 60);
-                timerText.setText(""+taskName+"\n"+currentMinute+":"+currentSecond);
-
-                timerBar.setProgress((int)(l*coefficient));
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-        }.start();
-        return newTimer;
+    private void removeUsedItem() {
+        itemNames.remove(0);
+        itemTimes.remove(0);
     }
 
+    private boolean checkItemsLeft() {
+        return itemNames.size()>0;
+    }
+
+    private void setNewTimer(){
+        if (checkItemsLeft()){
+            String currentName = itemNames.get(0);
+            long currentTime = itemTimes.get(0);
+            removeUsedItem();
+            startTimer(currentName, currentTime);
+        }
+        if (itemNames.size() < 1){
+            //прячет кнопку следующая активность, если их больше нет
+            nextItemTimer.setVisibility(View.GONE);
+        }
+    }
+
+    private void startTimer(String currentName, long currentTime) {
+        Toast.makeText(this, "currentTime "+currentTime, Toast.LENGTH_SHORT).show();
+        newTimer= new ItemCountDownTimer(currentTime, 1000);
+        newTimer.start();
+    }
+
+    //при нажатии на кнопку остановки таймера
     private void stopTimer(CountDownTimer timer){
         timer.cancel();
     }
+
+    //класс таймера
+    public class ItemCountDownTimer extends CountDownTimer {
+        double progressBarCoef = progressBar.getMax() / (double) itemTimeSum;
+
+        public ItemCountDownTimer(long timeLeft, long countDownInterval) {
+            super(timeLeft, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long timeLeft) {
+            Toast.makeText(TimerActivity.this, String.format("timeleft %d",timeLeft), Toast.LENGTH_SHORT).show();
+            timeLeft /= 1000;
+            int currentMinute = (int) (timeLeft / 60);
+            int currentSecond = (int) (timeLeft % 60);
+            timerText.setText(String.format(Locale.getDefault(), "%d:%d", currentMinute,currentSecond));
+            int progress = (int) (timeLeft * progressBarCoef);
+
+            progressBar.setProgress(progress);
+        }
+
+        @Override
+        public void onFinish() {
+            if (itemNames.size() > 0){
+                //может вызвать ошибку
+                setNewTimer();
+            }
+
+        }
+    }
+
 }

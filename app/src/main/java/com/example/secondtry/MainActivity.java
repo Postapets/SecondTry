@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
         taskTimes.add((long) 130);
 
     }
+//
+//    public void onRestart() {
+//        super.onRestart();
+//        this.onCreate(null);
+//    }
 
     //используется в main_activity.xml при нажатии кнопки добавить
     public void add(View view) {

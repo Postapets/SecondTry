@@ -87,9 +87,8 @@
         android:timePickerMode="spinner" />
 
 
-
     <Button
-        android:id="@+id/add"
+        android:id="@+id/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -98,7 +97,20 @@
         android:background="@drawable/dark_green_button_selector"
         app:backgroundTint="@null"
         android:fontFamily="@font/roboto_regular"
-        android:onClick="save"
         android:text="@string/save_button" />
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/dark_green_button_selector"
+        app:backgroundTint="@null"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/delete_button" />
+
+
 </LinearLayout>
 

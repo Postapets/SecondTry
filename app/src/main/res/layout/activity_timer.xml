@@ -53,19 +53,39 @@
         android:layout_height="334dp"
         app:srcCompat="@drawable/rhino" />
 
-    <Button
-        android:id="@+id/end_timer"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:background="@drawable/dark_green_button_selector"
-        app:backgroundTint="@null"
-        android:fontFamily="@font/roboto_regular"
-        android:onClick="TODO"
-        android:text="@string/end_timer"
-        android:textColor="@color/white" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/end_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_margin="16dp"
+            android:background="@drawable/dark_green_button_selector"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:onClick="TODO"
+            android:text="@string/end_timer"
+            android:textColor="@color/white"
+            app:backgroundTint="@null" />
+
+        <Button
+            android:id="@+id/nextItemTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_margin="16dp"
+            android:background="@drawable/dark_green_button_selector"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:onClick="TODO"
+            android:text="@string/next_timer"
+            android:textColor="@color/white"
+            app:backgroundTint="@null" />
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/timerBar"

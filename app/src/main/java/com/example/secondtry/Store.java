@@ -34,4 +34,8 @@ public class Store {
     public Item get(int index) {
         return this.items.get(index);
     }
+
+    public void change(int index, Item item){
+        this.items.set(index,item);
+    }
 }
