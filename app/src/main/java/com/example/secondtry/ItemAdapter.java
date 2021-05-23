@@ -3,10 +3,13 @@ package com.example.secondtry;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,11 +39,13 @@ public final class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int index) {
         //вешаем событие на view, которое получили в onCreateViewHolder
-        holder.itemView.setOnClickListener(
-                view -> {
-                    Intent intent = new Intent(context,ItemActivity.class);
-                    intent.putExtra("index", index);
-                    context.startActivity(intent);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(context, ItemActivity.class);
+                        intent.putExtra("index", index);
+                        context.startActivity(intent);
+                    }
                 }
         );
         TextView name = holder.itemView.findViewById(R.id.name);
@@ -49,15 +54,26 @@ public final class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         EditText timeDuration = holder.itemView.findViewById(R.id.timeDuration);
         Item item = Store.getStore().get(index);
 
-
-        //Маша я тут сделал index+1 чтобы он выводил нумерацию не с нуля, если че
-        // по идее не должно влиять ни на что, но посмотри, мало ли
         name.setText(String.format("%s %s", index+1, item.getName()));
         created.setText(format(item.getCreated()));
-        //чтоб потом удалять надо будет добавлять в массив значений отмеченных
-        itemChecked.setOnCheckedChangeListener((view, checked) -> item.setDone(checked));
+
+        //редактируем массив отмеченных элементов
+        itemChecked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton view, boolean checked) {
+                if (checked){
+                    Store.getStore().addChecked(index);
+                    Toast.makeText(context, "checked "+Store.getStore().getChecked(index).toString(), Toast.LENGTH_SHORT).show();
+                } else {
+                    if (Store.getStore().getAllChecked().contains(index)){ Store.getStore().removeChecked(index); }
+                }
+            }
+        });
+
         Long itemSeconds = item.getTimeAmount();
-        timeDuration.setText(String.format(Locale.getDefault(),"%d:%d", itemSeconds % 60, itemSeconds / 60));
+        timeDuration.setText(String.format(
+                Locale.getDefault(),"%d:%d", itemSeconds % 60, itemSeconds / 60
+                ));
     }
 
     //это наверное тож потом в другой класс запихнем

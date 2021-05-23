@@ -44,7 +44,7 @@
 
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="323dp"
             android:layout_marginTop="50dp"
             android:layout_marginBottom="16dp"
@@ -66,4 +66,4 @@
             android:text="@string/go_to_main_button"
             android:textColor="@color/white" />
     </LinearLayout>
-</>
+</LinearLayout>
