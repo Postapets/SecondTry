@@ -86,7 +86,6 @@ public final class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHo
                 int itemId = itemList.get(index).getId();
                 if (checked){
                     Store.getStore().addChecked(itemId);
-                    //Toast.makeText(context, "checked "+Store.getStore().getChecked(index).toString(), Toast.LENGTH_SHORT).show();
                 } else {
                     if (Store.getStore().getAllChecked().contains(itemId)){ Store.getStore().removeChecked(itemId); }
                 }

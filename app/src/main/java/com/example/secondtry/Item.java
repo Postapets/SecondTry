@@ -49,7 +49,6 @@ public class Item implements Serializable {
     }
 
     public int getId() { return id; }
-
     //ОПАСНО
     public void setId(int id) { this.id = id; }
 

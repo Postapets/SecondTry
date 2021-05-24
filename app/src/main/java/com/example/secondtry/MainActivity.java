@@ -58,14 +58,19 @@ public class MainActivity extends AppCompatActivity {
     public void delete(View view){
         if (Store.getStore().sizeChecked() > 0){
             List<Integer> checkedItems = Store.getStore().getAllChecked();
+            int checkedSize = checkedItems.size();
+            Toast.makeText(this, "checkedSize:"+checkedSize, Toast.LENGTH_SHORT).show();
             AppDatabase db = AppDatabase.getDbInstance(this.getApplicationContext());
-            for (int i=0;i<checkedItems.size();i++){
+            for (int i=0;i<checkedSize;i++){
                 Item item = db.itemDao().getById(checkedItems.get(i));
                 db.itemDao().delete(item);
+                Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
             }
-//            for (int i=0; i<checkedItems.size();i++) {
-//                Store.getStore().remove(checkedItems.get(i));
-//            }
+
+            for (int i=0;i<checkedSize;i++){
+                Toast.makeText(this, "checkedSize2:"+checkedSize, Toast.LENGTH_SHORT).show();
+                Store.getStore().remove(checkedItems.get(i));
+            }
             loadItemList();
         } else{
             Toast.makeText(this, "Выберите элементы для удаления!", Toast.LENGTH_SHORT).show();

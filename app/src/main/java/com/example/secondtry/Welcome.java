@@ -22,7 +22,6 @@ public class Welcome extends AppCompatActivity {
                 Intent intent = new Intent(Welcome.this,Log_in.class);
                 startActivity(intent);
 
-                Toast.makeText(Welcome.this,"button is click1ed",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -33,10 +32,7 @@ public class Welcome extends AppCompatActivity {
                 Intent intent = new Intent(Welcome.this,Sign_in.class);
                 startActivity(intent);
 
-                Toast.makeText(Welcome.this,"Text is clicked",Toast.LENGTH_SHORT).show();
             }
-
-
         });
 
     }

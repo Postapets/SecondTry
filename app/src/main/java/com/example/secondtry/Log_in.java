@@ -21,8 +21,8 @@ public class Log_in extends AppCompatActivity {
         button=(Button) findViewById(R.id.enter_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
-                //Intent intent = new Intent(Log_in.this,TODO.class);
-               //startActivity(intent);
+                Intent intent = new Intent(Log_in.this,MainActivity.class);
+                startActivity(intent);
 
             }
         });
