@@ -24,6 +24,7 @@
         <activity android:name=".Welcome"/>
         <activity android:name=".Log_in"/>
         <activity android:name=".Sign_in"/>
+        <activity android:name=".NavigationActivity"/>
     </application>
 
 </manifest>
