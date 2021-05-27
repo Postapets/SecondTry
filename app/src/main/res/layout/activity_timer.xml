@@ -81,6 +81,19 @@
             android:text="@string/end_timer"
             android:textColor="@color/white"
             app:backgroundTint="@null" />
+    <Button
+        android:id="@+id/nextItemTimer"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:background="@drawable/dark_green_button_selector"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="center"
+        android:onClick="TODO"
+        android:text="@string/end_timer"
+        android:textColor="@color/white"
+        app:backgroundTint="@null" />
 
 
 
