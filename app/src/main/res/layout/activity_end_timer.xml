@@ -56,12 +56,25 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
+            android:layout_marginBottom="16dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:background="@drawable/dark_green_button_selector"
             app:backgroundTint="@null"
             android:fontFamily="@font/roboto_regular"
             android:text="@string/go_to_main_button"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/go_to_next_task_end_timer"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@drawable/dark_green_button_selector"
+            app:backgroundTint="@null"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/go_to_next_task"
             android:textColor="@color/white" />
     </LinearLayout>
 </LinearLayout>

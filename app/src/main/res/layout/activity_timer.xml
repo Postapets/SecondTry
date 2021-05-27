@@ -50,25 +50,30 @@
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="match_parent"
-        android:layout_height="424dp"
+        android:layout_height="366dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/dark_rect"
         android:padding="10dp"
         app:srcCompat="@drawable/rhino" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
+        <ProgressBar
+            android:id="@+id/timerBar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="13dp"
+            android:max="100"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
         <Button
             android:id="@+id/end_timer"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_gravity="center|center_vertical"
-            android:layout_marginStart="18dp"
-            android:layout_marginEnd="40dp"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
             android:background="@drawable/dark_green_button_selector"
             android:fontFamily="@font/roboto_regular"
             android:gravity="center"
@@ -77,30 +82,8 @@
             android:textColor="@color/white"
             app:backgroundTint="@null" />
 
-        <Button
-            android:id="@+id/nextItemTimer"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center|center_vertical"
-            android:layout_margin="16dp"
-            android:background="@drawable/dark_green_button_selector"
-            android:fontFamily="@font/roboto_regular"
-            android:textSize="12sp"
-            android:gravity="center"
-            android:onClick="TODO"
-            android:text="@string/next_timer"
-            android:textColor="@color/white"
-            app:backgroundTint="@null" />
-    </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/timerBar"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="13dp"
-        android:max="100"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+
+
 
 </LinearLayout>

@@ -36,5 +36,7 @@
     <string name="go_to_main_button">Вернуться на главную</string>
     <string name="timer_interrupted_text">Так быстро?</string>
     <string name="timer_interrupted_text2">Вы уже все успели?</string>
+    <string name="go_to_next_task">К следующей задаче</string>
+
 
 </resources>
