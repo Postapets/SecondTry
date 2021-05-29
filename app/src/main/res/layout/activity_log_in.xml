@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/green_background"
-    tools:context=".Log_in">
+    tools:context=".initial.Log_in">
 
     <ImageView
         android:id="@+id/imageView2"

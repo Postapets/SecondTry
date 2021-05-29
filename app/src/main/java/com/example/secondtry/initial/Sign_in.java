@@ -1,4 +1,4 @@
-package com.example.secondtry;
+package com.example.secondtry.initial;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.secondtry.NavigationActivity;
+import com.example.secondtry.R;
 
 public class Sign_in extends AppCompatActivity {
     TextView textView;
@@ -20,7 +22,7 @@ public class Sign_in extends AppCompatActivity {
         button=(Button) findViewById(R.id.enter_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
-                Intent intent = new Intent(Sign_in.this,NavigationActivity.class);
+                Intent intent = new Intent(Sign_in.this, NavigationActivity.class);
                 startActivity(intent);
 
             }
@@ -30,7 +32,7 @@ public class Sign_in extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Sign_in.this,Log_in.class);
+                Intent intent = new Intent(Sign_in.this, Log_in.class);
                 startActivity(intent);
             }
 

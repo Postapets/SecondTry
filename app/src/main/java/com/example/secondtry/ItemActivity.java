@@ -15,6 +15,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.secondtry.database.AppDatabase;
+import com.example.secondtry.storage.Item;
 
 //класс для отображения данных о конкретном нажатом iteme
 public class ItemActivity extends AppCompatActivity {

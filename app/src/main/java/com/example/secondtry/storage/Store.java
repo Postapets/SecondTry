@@ -1,9 +1,6 @@
-package com.example.secondtry;
+package com.example.secondtry.storage;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
-
-import com.example.secondtry.database.AppDatabase;
 
 import java.util.ArrayList;
 import java.util.List;

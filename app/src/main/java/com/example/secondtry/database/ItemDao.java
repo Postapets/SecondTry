@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.secondtry.Item;
+import com.example.secondtry.storage.Item;
 
 import java.util.List;
 

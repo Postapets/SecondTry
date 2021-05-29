@@ -7,7 +7,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-import com.example.secondtry.Item;
+import com.example.secondtry.storage.Item;
 
 @Database(entities = {Item.class}, version = 1)
 @TypeConverters({Converters.class})
